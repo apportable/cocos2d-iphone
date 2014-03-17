@@ -27,18 +27,21 @@
 
 @implementation CCBSequence
 
-@synthesize duration;
-@synthesize name;
-@synthesize sequenceId;
-@synthesize chainedSequenceId;
-@synthesize callbackChannel;
-@synthesize soundChannel;
-
-- (id) init
+- (id)init
 {
     self = [super init];
     if (!self) return NULL;
     
+    // Defaults
+    _duration          = 0.0f;
+    _name              = @"";
+    _sequenceId        = -1;
+    _chainedSequenceId = 0;
+    _loops             = 0;
+    
+    _callbackChannel   = nil;
+    _soundChannel      = nil;
+
     return self;
 }
 

@@ -41,9 +41,7 @@
 
 #pragma mark EaseAction
 
-//
-// EaseAction
-//
+
 @implementation CCActionEase
 
 @synthesize inner=_inner;
@@ -96,9 +94,7 @@
 #pragma mark -
 #pragma mark EaseRate
 
-//
-// EaseRateAction
-//
+
 @implementation CCActionEaseRate
 @synthesize rate=_rate;
 +(id) actionWithAction: (CCActionInterval*) action rate:(float)rate
@@ -127,9 +123,7 @@
 }
 @end
 
-//
-// EeseIn
-//
+
 @implementation CCActionEaseIn
 -(void) update: (CCTime) t
 {
@@ -137,9 +131,7 @@
 }
 @end
 
-//
-// EaseOut
-//
+
 @implementation CCActionEaseOut
 -(void) update: (CCTime) t
 {
@@ -147,9 +139,7 @@
 }
 @end
 
-//
-// EaseInOut
-//
+
 @implementation CCActionEaseInOut
 -(void) update: (CCTime) t
 {
@@ -173,9 +163,7 @@
 #pragma mark -
 #pragma mark EaseElastic actions
 
-//
-// EaseElastic
-//
+
 @implementation CCActionEaseElastic
 
 @synthesize period = _period;
@@ -217,9 +205,6 @@
 
 @end
 
-//
-// EaseElasticIn
-//
 
 @implementation CCActionEaseElasticIn
 -(void) update: (CCTime) t
@@ -243,9 +228,7 @@
 
 @end
 
-//
-// EaseElasticOut
-//
+
 @implementation CCActionEaseElasticOut
 
 -(void) update: (CCTime) t
@@ -268,9 +251,7 @@
 
 @end
 
-//
-// EaseElasticInOut
-//
+
 @implementation CCActionEaseElasticInOut
 -(void) update: (CCTime) t
 {
@@ -303,9 +284,7 @@
 #pragma mark -
 #pragma mark EaseBounce actions
 
-//
-// EaseBounce
-//
+
 @implementation CCActionEaseBounce
 -(CCTime) bounceTime:(CCTime) t
 {
@@ -326,9 +305,6 @@
 }
 @end
 
-//
-// EaseBounceIn
-//
 
 @implementation CCActionEaseBounceIn
 
@@ -349,6 +325,7 @@
 
 @end
 
+
 @implementation CCActionEaseBounceOut
 
 -(void) update: (CCTime) t
@@ -367,6 +344,7 @@
 }
 
 @end
+
 
 @implementation CCActionEaseBounceInOut
 
@@ -389,9 +367,7 @@
 #pragma mark -
 #pragma mark Ease Back actions
 
-//
-// EaseBackIn
-//
+
 @implementation CCActionEaseBackIn
 
 -(void) update: (CCTime) t
@@ -406,9 +382,7 @@
 }
 @end
 
-//
-// EaseBackOut
-//
+
 @implementation CCActionEaseBackOut
 -(void) update: (CCTime) t
 {
@@ -424,9 +398,7 @@
 }
 @end
 
-//
-// EaseBackInOut
-//
+
 @implementation CCActionEaseBackInOut
 
 -(void) update: (CCTime) t
@@ -440,5 +412,20 @@
 		t = t - 2;
 		[_inner update: (t * t * ((overshoot + 1) * t + overshoot)) / 2 + 1];
 	}
+}
+@end
+
+
+@implementation CCActionEaseInstant
+-(void) update: (CCTime) t
+{
+    if (t < 0)
+    {
+        [self.inner update:0];
+    }
+    else
+    {
+        [self.inner update:1];
+    }
 }
 @end

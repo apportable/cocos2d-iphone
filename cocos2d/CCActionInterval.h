@@ -279,6 +279,11 @@
 	float _dstAngleY;
 	float _startAngleY;
 	float _diffAngleY;
+    
+    bool _rotateX;
+    bool _rotateY;
+    
+    bool _direct;
 }
 
 /**
@@ -292,6 +297,17 @@
 + (id)actionWithDuration:(CCTime)duration angle:(float)angle;
 
 /**
+ *  Creates the action.
+ *
+ *  @param duration Action duration.
+ *  @param angle    Angle to rotate to (degrees).
+ *  @param direct   Direct rotation, no smart angle checks.
+ *
+ *  @return New rotate action.
+ */
++ (id)actionWithDuration:(CCTime)duration angle:(float) a direct:(bool) direct;
+
+/**
  *  Initializes the action.
  *
  *  @param duration Action duration.
@@ -299,29 +315,58 @@
  *
  *  @return New rotate action
  */
+- (id)initWithDuration:(CCTime)duration angle:(float)angle direct:(bool) direct;
+
+/**
+ *  Initializes the action.
+ *
+ *  @param duration Action duration.
+ *  @param angle    Angle to rotate to (degrees).
+ *  @param direct   Direct rotation, no smart angle checks.
+ *
+ *  @return New rotate action
+ */
 - (id)initWithDuration:(CCTime)duration angle:(float)angle;
 
 /**
- *  Creates the action with separate rotation angles.
+ *  Creates the action with angleX rotation angle.
  *
  *  @param t  Action duration.
  *  @param aX X rotation in degrees.
- *  @param aY Y rotation in degrees.
  *
  *  @return New rotate action.
  */
-+ (id)actionWithDuration:(CCTime)t angleX:(float)aX angleY:(float)aY;
++ (id)actionWithDuration:(CCTime)t angleX:(float)aX;
 
 /**
- *  Initializes the action with separate rotation angles.
+ *  Initializes the action with angleX rotation angle.
  *
  *  @param t  Action duration.
  *  @param aX X rotation in degrees.
+ *
+ *  @return New rotate action.
+ */
+- (id)initWithDuration:(CCTime)t angleX:(float)aX;
+
+/**
+ *  Creates the action with angleY rotation angle.
+ *
+ *  @param t  Action duration.
  *  @param aY Y rotation in degrees.
  *
  *  @return New rotate action.
  */
-- (id)initWithDuration:(CCTime)t angleX:(float)aX angleY:(float)aY;
++ (id)actionWithDuration:(CCTime)t angleY:(float)aY;
+
+/**
+ *  Initializes the action with angleY rotation angle.
+ *
+ *  @param t  Action duration.
+ *  @param aY Y rotation in degrees.
+ *
+ *  @return New rotate action.
+ */
+- (id)initWithDuration:(CCTime)t angleY:(float)aY;
 
 @end
 

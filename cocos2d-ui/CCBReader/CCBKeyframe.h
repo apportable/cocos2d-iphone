@@ -26,12 +26,6 @@
 #import <Foundation/Foundation.h>
 
 @interface CCBKeyframe : NSObject
-{
-    id value;
-    float time;
-    int easingType;
-    float easingOpt;
-}
 
 @property (nonatomic,strong) id value;
 @property (nonatomic,assign) float time;
