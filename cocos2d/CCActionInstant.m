@@ -389,6 +389,12 @@
     [[OALSimpleAudio sharedInstance] playEffect:_soundFile volume:_gain pitch:_pitch pan:_pan loop:NO];
 }
 
+- (id)copyWithZone:(NSZone*)zone
+{
+	CCSpriteFrame *copy = [[[self class] allocWithZone: zone] initWithSoundFile:_soundFile pitch:_pitch pan:_pan gain:_gain];
+	return copy;
+}
+
 @end
 
 

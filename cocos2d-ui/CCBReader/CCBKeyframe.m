@@ -37,6 +37,7 @@
     _time               = 0.0f;
     _easingType         = 0;
     _easingOpt          = 0.0f;
+    _frameActions       = nil;
     
     return self;
 }

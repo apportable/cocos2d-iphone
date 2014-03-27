@@ -283,7 +283,7 @@
     bool _rotateX;
     bool _rotateY;
     
-    bool _direct;
+    bool _simple;
 }
 
 /**
@@ -301,28 +301,28 @@
  *
  *  @param duration Action duration.
  *  @param angle    Angle to rotate to (degrees).
- *  @param direct   Direct rotation, no smart angle checks.
+ *  @param direct   Simple rotation, no smart checks.
  *
  *  @return New rotate action.
  */
-+ (id)actionWithDuration:(CCTime)duration angle:(float) a direct:(bool) direct;
++ (id)actionWithDuration:(CCTime)duration angle:(float)angle simple:(bool)simple;
 
 /**
  *  Initializes the action.
  *
  *  @param duration Action duration.
  *  @param angle    Angle to rotate to (degrees).
+ *  @param direct   Simple rotation, no smart checks.
  *
  *  @return New rotate action
  */
-- (id)initWithDuration:(CCTime)duration angle:(float)angle direct:(bool) direct;
+- (id)initWithDuration:(CCTime)duration angle:(float)angle simple:(bool)simple;
 
 /**
  *  Initializes the action.
  *
  *  @param duration Action duration.
  *  @param angle    Angle to rotate to (degrees).
- *  @param direct   Direct rotation, no smart angle checks.
  *
  *  @return New rotate action
  */

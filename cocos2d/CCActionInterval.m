@@ -491,24 +491,24 @@
 
 +(id) actionWithDuration: (CCTime) t angle:(float) a
 {
-	return [[self alloc] initWithDuration:t angle:a direct:NO];
+	return [[self alloc] initWithDuration:t angle:a simple:NO];
 }
 
-+(id) actionWithDuration: (CCTime) t angle:(float) a direct:(bool) direct
++(id) actionWithDuration: (CCTime) t angle:(float) a simple:(bool)simple
 {
-	return [[self alloc] initWithDuration:t angle:a direct:direct];
+	return [[self alloc] initWithDuration:t angle:a simple:simple];
 }
 
 -(id) initWithDuration: (CCTime) t angle:(float) a
 {
-	return [self initWithDuration:t angle:a direct:NO];
+	return [self initWithDuration:t angle:a simple:NO];
 }
 
--(id) initWithDuration: (CCTime) t angle:(float) a direct:(bool) direct
+-(id) initWithDuration: (CCTime) t angle:(float) a simple:(bool) simple
 {
 	if( (self=[super initWithDuration: t]) ) {
 		_dstAngleX = _dstAngleY = a;
-        _direct    = direct;
+        _simple    = simple;
     }
 
 	return self;
@@ -561,16 +561,26 @@
 
 -(id) copyWithZone: (NSZone*) zone
 {
-	CCAction *copy = [[[self class] allocWithZone: zone] initWithDuration:[self duration] angleX:_dstAngleX angleY:_dstAngleY];
-	return copy;
+
+    if(_rotateX && _rotateY) {
+        return [[[self class] allocWithZone: zone] initWithDuration:[self duration] angleX:_dstAngleX angleY:_dstAngleY];
+    } else if (_rotateX) {
+        return [[[self class] allocWithZone: zone] initWithDuration:[self duration] angleX:_dstAngleX];
+    } else if (_rotateY) {
+        return [[[self class] allocWithZone: zone] initWithDuration:[self duration] angleY:_dstAngleY];
+    } else if (_simple) {
+        return [[[self class] allocWithZone: zone] initWithDuration:[self duration] angle:_dstAngleX simple:YES];
+    } else {
+        return [[[self class] allocWithZone: zone] initWithDuration:[self duration] angle:_dstAngleX];
+    }
 }
 
 -(void) startWithTarget:(CCNode *)aTarget
 {
 	[super startWithTarget:aTarget];
     
-    // Direct Rotation (Support SpriteBuilder)
-    if(_direct) {
+    // Simple Rotation (Support SpriteBuilder)
+    if(_simple) {
         _startAngleX = _startAngleY = [(CCNode*)_target rotation];
         _diffAngleX = _dstAngleX - _startAngleX;
         _diffAngleY = _dstAngleY - _startAngleY;

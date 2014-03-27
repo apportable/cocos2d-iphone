@@ -46,6 +46,7 @@
     
     NSInteger _animationManagerId;
     CCBSequence* _runningSequence;
+    CCBSequence* _lastSequence;
     
     void (^block)(id sender);
     
