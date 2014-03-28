@@ -52,6 +52,7 @@
     
     CCScheduler* _scheduler;
     NSMutableArray* _currentActions;
+    
 }
 
 // Sequence Array.
@@ -105,9 +106,9 @@
 - (void)timeSeekForSequenceId:(int)seqId time:(float)time;
 
 #pragma mark Simple Sequence Builder
-- (void)addKeyFramesForSequenceNamed:(NSString*)name propertyType:(CCBSequencePropertyType)propertyType frameArray:(NSArray*)frameArray node:(CCNode *)node;
+- (void)addKeyFramesForSequenceNamed:(NSString*)name propertyType:(CCBSequencePropertyType)propertyType frameArray:(NSArray*)frameArray node:(CCNode *)node loop:(BOOL)loop;
 
 #pragma mark Cocos2D Animation Support
-- (void)animationWithSpriteFrames:animFrames delay:(float)delay name:(NSString*)name node:(CCNode*)node;
+- (void)animationWithSpriteFrames:animFrames delay:(float)delay name:(NSString*)name node:(CCNode*)node loop:(BOOL)loop;
 
 @end

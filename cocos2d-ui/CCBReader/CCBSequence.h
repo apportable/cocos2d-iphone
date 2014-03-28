@@ -30,10 +30,11 @@
 @interface CCBSequence : NSObject
 
 @property (nonatomic,assign) float duration;
+@property (nonatomic,assign) float time;
 @property (nonatomic,copy)   NSString* name;
 @property (nonatomic,assign) int sequenceId;
 @property (nonatomic,assign) int chainedSequenceId;
-@property (nonatomic,assign) int loops;
+@property (nonatomic,assign) int loops; // @todo
 
 // Channels
 @property (nonatomic,strong) CCBSequenceProperty* callbackChannel;
