@@ -400,6 +400,8 @@ typedef NS_ENUM(NSUInteger, CCDirectorProjection) {
  @see displayStats */
 @property (nonatomic, readonly) CCTime secondsPerFrame;
 
+-(CCTime)deltaTime;
+
 /** Ends the execution, releases the running scene.
  It doesn't remove the view from the view hierarchy. You have to do it manually.
  */

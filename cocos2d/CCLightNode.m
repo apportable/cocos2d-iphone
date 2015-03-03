@@ -89,18 +89,27 @@
 
 -(void)setIntensity:(float)intensity
 {
+    if (intensity >= 1.0) {
+        intensity = 1.0;
+    }
     NSCAssert((intensity >= 0.0) && (intensity <= 1.0), @"Supplied intensity out of range [0..1].");
     _intensity = clampf(intensity, 0.0f, 1.0f);
 }
 
 -(void)setSpecularIntensity:(float)intensity
 {
+    if (intensity >= 1.0) {
+        intensity = 1.0;
+    }
     NSCAssert((intensity >= 0.0) && (intensity <= 1.0), @"Supplied intensity out of range [0..1].");
     _specularIntensity = clampf(intensity, 0.0f, 1.0f);
 }
 
 -(void)setAmbientIntensity:(float)intensity
 {
+    if (intensity >= 1.0) {
+        intensity = 1.0;
+    }
     NSCAssert((intensity >= 0.0) && (intensity <= 1.0), @"Supplied intensity out of range [0..1].");
     _ambientIntensity = clampf(intensity, 0.0f, 1.0f);
 }

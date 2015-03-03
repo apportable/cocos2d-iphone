@@ -40,6 +40,12 @@
 #import "cocos2d.h"
 #import "CCRenderDispatch.h"
 
+#ifdef APPORTABLE
+
+#define NVIDIA_SHIELD_TABLET 0
+
+#endif
+
 Class CCGraphicsBufferClass;
 Class CCGraphicsBufferBindingsClass;
 Class CCRenderStateClass;
@@ -300,6 +306,9 @@ static char * glExtensions;
 			if(
 				[self checkForGLExtension:@"GL_OES_mapbuffer"] &&
 				[self checkForGLExtension:@"GL_EXT_map_buffer_range"]
+#ifdef APPORTABLE
+               && !NVIDIA_SHIELD_TABLET
+#endif
 			){
 				CCGraphicsBufferClass = NSClassFromString(@"CCGraphicsBufferGLUnsynchronized");
 			}
